@@ -1,19 +1,21 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
-import { TareaProgramada } from "./TareaProgramada";
-import { HistorialClima } from "./HistorialClima";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
+import { Plaga } from "./Plaga";
+import { DatosAExportar } from "./DatosAExportar";
 
 @Entity()
 export class ConsultaAPI {
-    @PrimaryGeneratedColumn()
-    id!: number;
+  @PrimaryGeneratedColumn()
+  id!: number;
 
-    @ManyToOne(() => TareaProgramada, tarea => tarea.consultas)
-    tarea!: TareaProgramada;
+  @Column()
+  endpoint!: string;
 
-    @ManyToOne(() => HistorialClima, clima => clima.consultas)
-    clima!: HistorialClima;
+  @Column()
+  fecha!: Date;
 
-    @Column("datetime")
-    realizadaEn!: Date;
+  @OneToMany(() => Plaga, plaga => plaga.consultaAPI)
+  plagas!: Plaga[];
+
+  @OneToMany(() => DatosAExportar, datos => datos.consultaAPI)
+  datosExportados!: DatosAExportar[];
 }
-    

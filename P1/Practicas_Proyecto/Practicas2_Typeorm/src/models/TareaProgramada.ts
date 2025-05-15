@@ -1,17 +1,16 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
-import { ConsultaAPI } from "./ConsultaAPI";
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
 @Entity()
 export class TareaProgramada {
-    @PrimaryGeneratedColumn()
-    id!: number;
+  @PrimaryGeneratedColumn()
+  id!: number;
 
-    @Column("int")
-    frecuencia!: number;
+  @Column()
+  nombre!: string;
 
-    @Column("datetime")
-    ultimaEjecucion!: Date;
+  @Column()
+  fechaEjecucion!: Date;
 
-    @OneToMany(() => ConsultaAPI, consulta => consulta.tarea)
-    consultas!: ConsultaAPI[];
+  @Column()
+  tipo!: string;
 }

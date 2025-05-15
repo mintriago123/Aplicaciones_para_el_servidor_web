@@ -1,11 +1,10 @@
 import 'reflect-metadata';
 import { DataSource } from "typeorm";
 import { ConsultaAPI } from "./models/ConsultaAPI";
-import { HistorialClima } from "./models/HistorialClima";
-import { HistorialPlaga } from "./models/HistorialPlaga";
 import { Plaga } from "./models/Plaga";
 import { TareaProgramada } from "./models/TareaProgramada";
-import { Notificacion } from './models/Notificacion';
+import { Cultivo } from "./models/Cultivo";
+import { DatosAExportar } from "./models/DatosAExportar";
 
 
     export const appdataSource = new DataSource({
@@ -14,10 +13,10 @@ import { Notificacion } from './models/Notificacion';
         port: 5432,
         username: "postgres",
         password: "hola12p12",
-        database: "postgres",
+        database: "bdpracticasproyecto2",
         synchronize: true,
         logging: true,
-        entities: [ConsultaAPI, HistorialClima, HistorialPlaga, Plaga, TareaProgramada, Notificacion],
+        entities: [ConsultaAPI, Plaga, TareaProgramada, Cultivo, DatosAExportar],
         subscribers: [],
         migrations: [],
 

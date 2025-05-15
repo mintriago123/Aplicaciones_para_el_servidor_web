@@ -1,17 +1,21 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
-import { HistorialPlaga } from "./HistorialPlaga";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+import { ConsultaAPI } from "./ConsultaAPI";
+import { Cultivo } from "./Cultivo";
 
 @Entity()
 export class Plaga {
-    @PrimaryGeneratedColumn()
-    id!: number;
+  @PrimaryGeneratedColumn()
+  id!: number;
 
-    @Column()
-    nombre!: string;
+  @Column()
+  nombre!: string;
 
-    @Column()
-    especie!: string;
+  @Column()
+  nivel!: string;
 
-    @OneToMany(() => HistorialPlaga, historial => historial.plaga)
-    historial!: HistorialPlaga[];
+  @ManyToOne(() => ConsultaAPI, consulta => consulta.plagas)
+  consultaAPI!: ConsultaAPI;
+
+  @ManyToOne(() => Cultivo, cultivo => cultivo.plagas)
+  cultivo!: Cultivo;
 }
