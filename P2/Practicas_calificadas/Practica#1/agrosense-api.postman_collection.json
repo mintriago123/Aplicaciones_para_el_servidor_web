@@ -1,0 +1,124 @@
+{
+  "info": {
+    "name": "AgroSense API (NestJS)",
+    "_postman_id": "1a2b3c4d-5e6f-7g8h-9i10-jk11lm12no13",
+    "description": "Colección para probar los endpoints de cultivo, plaga y dato-aexportar",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Cultivo",
+      "item": [
+        {
+          "name": "Crear Cultivo",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Papa\",\n  \"tipo\": \"Tubérculo\",\n  \"temporada\": \"Invierno\",\n  \"region\": \"Sierra\" \n}"
+            },
+            "url": { "raw": "http://localhost:3000/api/v1/cultivo", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "v1", "cultivo"] }
+          }
+        },
+        {
+          "name": "Obtener todos los Cultivos",
+          "request": { "method": "GET", "url": { "raw": "http://localhost:3000/api/v1/cultivo", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "v1", "cultivo"] } }
+        },
+        {
+          "name": "Obtener un Cultivo por ID",
+          "request": { "method": "GET", "url": { "raw": "http://localhost:3000/api/v1/cultivo/1", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "v1", "cultivo", "1"] } }
+        },
+        {
+          "name": "Actualizar un Cultivo",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{ \"region\": \"Costa\" }" },
+            "url": { "raw": "http://localhost:3000/api/v1/cultivo/1", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "v1", "cultivo", "1"] }
+          }
+        },
+        {
+          "name": "Eliminar un Cultivo",
+          "request": { "method": "DELETE", "url": { "raw": "http://localhost:3000/api/v1/cultivo/1", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "v1", "cultivo", "1"] } }
+        }
+      ]
+    },
+    {
+      "name": "Plaga",
+      "item": [
+        {
+          "name": "Crear Plaga",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Mosca Blanca\",\n  \"tipo\": \"Insecto\",\n  \"regionAfectada\": \"Costa\",\n  \"nivelRiesgo\": \"Alto\"\n}"
+            },
+            "url": { "raw": "http://localhost:3000/api/v1/plaga", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "v1", "plaga"] }
+          }
+        },
+        {
+          "name": "Obtener todas las Plagas",
+          "request": { "method": "GET", "url": { "raw": "http://localhost:3000/api/v1/plaga", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "v1", "plaga"] } }
+        },
+        {
+          "name": "Obtener una Plaga por ID",
+          "request": { "method": "GET", "url": { "raw": "http://localhost:3000/api/v1/plaga/1", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "v1", "plaga", "1"] } }
+        },
+        {
+          "name": "Actualizar una Plaga",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{ \"nivelRiesgo\": \"Moderado\" }" },
+            "url": { "raw": "http://localhost:3000/api/v1/plaga/1", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "v1", "plaga", "1"] }
+          }
+        },
+        {
+          "name": "Eliminar una Plaga",
+          "request": { "method": "DELETE", "url": { "raw": "http://localhost:3000/api/v1/plaga/1", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "v1", "plaga", "1"] } }
+        }
+      ]
+    },
+    {
+      "name": "DatoAexportar",
+      "item": [
+        {
+          "name": "Crear DatoAexportar",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"producto\": \"Cacao\",\n  \"cantidad\": 200,\n  \"destino\": \"Alemania\",\n  \"fechaExportacion\": \"2025-07-10\"\n}"
+            },
+            "url": { "raw": "http://localhost:3000/api/v1/dato-aexportar", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "v1", "dato-aexportar"] }
+          }
+        },
+        {
+          "name": "Obtener todos los Datos a Exportar",
+          "request": { "method": "GET", "url": { "raw": "http://localhost:3000/api/v1/dato-aexportar", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "v1", "dato-aexportar"] } }
+        },
+        {
+          "name": "Obtener un Dato a Exportar por ID",
+          "request": { "method": "GET", "url": { "raw": "http://localhost:3000/api/v1/dato-aexportar/1", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "v1", "dato-aexportar", "1"] } }
+        },
+        {
+          "name": "Actualizar un Dato a Exportar",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{ \"cantidad\": 250 }" },
+            "url": { "raw": "http://localhost:3000/api/v1/dato-aexportar/1", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "v1", "dato-aexportar", "1"] }
+          }
+        },
+        {
+          "name": "Eliminar un Dato a Exportar",
+          "request": { "method": "DELETE", "url": { "raw": "http://localhost:3000/api/v1/dato-aexportar/1", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "v1", "dato-aexportar", "1"] } }
+        }
+      ]
+    }
+  ]
+}
