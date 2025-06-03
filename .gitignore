@@ -5,3 +5,8 @@ coverage
 logs
 temp
 cache
+.env
+.env.local
+.env.development
+.env.test
+.env.production
