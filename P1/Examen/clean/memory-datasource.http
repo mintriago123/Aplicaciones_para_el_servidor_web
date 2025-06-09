@@ -1,0 +1,218 @@
+### Memory Datasource API Examples
+### Base URL para todos los endpoints de memoria
+@baseUrl = http://localhost:3000/api/todos-memory
+
+##################################################
+### ENDPOINTS DE SISTEMA
+##################################################
+
+### Obtener información del sistema y datasource actual
+GET http://localhost:3000/api/system/info
+
+### Cambiar datasource a MEMORY (en tiempo de ejecución)
+POST http://localhost:3000/api/system/datasource
+Content-Type: application/json
+
+{
+  "type": "MEMORY"
+}
+
+### Cambiar datasource a PRISMA (en tiempo de ejecución)
+POST http://localhost:3000/api/system/datasource
+Content-Type: application/json
+
+{
+  "type": "PRISMA"
+}
+
+### Cambiar datasource a TYPEORM (en tiempo de ejecución)
+POST http://localhost:3000/api/system/datasource
+Content-Type: application/json
+
+{
+  "type": "TYPEORM"
+}
+
+##################################################
+### ENDPOINTS DE MEMORIA ESPECÍFICOS
+##################################################
+
+### 1. Obtener estadísticas del datasource de memoria
+GET {{baseUrl}}/memory/stats
+
+### 2. Obtener todos los todos
+GET {{baseUrl}}
+
+### 3. Obtener datos raw (objetos literales)
+GET {{baseUrl}}/memory/raw
+
+### 4. Crear un nuevo todo
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "text": "Implementar funcionalidad de memoria"
+}
+
+### 5. Obtener todo por ID
+GET {{baseUrl}}/1
+
+### 6. Actualizar un todo (marcar como completado)
+PUT {{baseUrl}}/1
+Content-Type: application/json
+
+{
+  "text": "Funcionalidad de memoria implementada",
+  "completedAt": "2024-01-20T10:30:00.000Z"
+}
+
+### 7. Crear otro todo
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "text": "Escribir documentación"
+}
+
+### 8. Obtener estadísticas actualizadas
+GET {{baseUrl}}/memory/stats
+
+### 9. Exportar datos como JSON (descarga archivo)
+GET {{baseUrl}}/memory/export
+
+### 10. Importar datos desde arreglo
+POST {{baseUrl}}/memory/import
+Content-Type: application/json
+
+{
+  "data": [
+    {
+      "id": 100,
+      "text": "Todo importado desde arreglo",
+      "completedAt": null
+    },
+    {
+      "id": 101,
+      "text": "Otro todo importado",
+      "completedAt": "2024-01-19T15:45:00.000Z"
+    }
+  ]
+}
+
+### 11. Importar datos desde JSON string
+POST {{baseUrl}}/memory/import
+Content-Type: application/json
+
+{
+  "data": "[{\"id\":200,\"text\":\"Todo desde JSON string\",\"completedAt\":null}]"
+}
+
+### 12. Verificar datos importados
+GET {{baseUrl}}
+
+### 13. Eliminar un todo
+DELETE {{baseUrl}}/1
+
+### 14. Limpiar todos los datos
+DELETE {{baseUrl}}/memory/clear
+
+### 15. Verificar que los datos fueron limpiados
+GET {{baseUrl}}
+
+### 16. Reiniciar con datos de ejemplo
+POST {{baseUrl}}/memory/reset
+
+### 17. Verificar datos de ejemplo restaurados
+GET {{baseUrl}}
+
+### 18. Obtener estadísticas finales
+GET {{baseUrl}}/memory/stats
+
+##################################################
+### ENDPOINTS UNIFICADOS (Usan datasource configurado)
+##################################################
+
+### Base URL para endpoints unificados que respetan la configuración
+@unifiedUrl = http://localhost:3000/api/todos
+
+### Verificar info del sistema antes de usar endpoints unificados
+GET http://localhost:3000/api/system/info
+
+### Obtener todos con datasource configurado
+GET {{unifiedUrl}}
+
+### Crear todo con datasource configurado
+POST {{unifiedUrl}}
+Content-Type: application/json
+
+{
+  "text": "Todo creado con datasource configurado"
+}
+
+### Obtener todo por ID con datasource configurado
+GET {{unifiedUrl}}/1
+
+### Actualizar todo con datasource configurado
+PUT {{unifiedUrl}}/1
+Content-Type: application/json
+
+{
+  "text": "Todo actualizado con datasource configurado",
+  "completedAt": "2024-01-20T15:30:00.000Z"
+}
+
+### Eliminar todo con datasource configurado
+DELETE {{unifiedUrl}}/1
+
+##################################################
+### DEMO: Cambio dinámico de datasource
+##################################################
+
+### 1. Verificar datasource actual
+GET http://localhost:3000/api/system/info
+
+### 2. Cambiar a datasource de memoria
+POST http://localhost:3000/api/system/datasource
+Content-Type: application/json
+
+{
+  "type": "MEMORY"
+}
+
+### 3. Crear todo con datasource de memoria (via endpoints unificados)
+POST {{unifiedUrl}}
+Content-Type: application/json
+
+{
+  "text": "Todo en memoria via endpoint unificado"
+}
+
+### 4. Verificar que el todo se creó
+GET {{unifiedUrl}}
+
+### 5. Cambiar a datasource Prisma (requiere base de datos configurada)
+POST http://localhost:3000/api/system/datasource
+Content-Type: application/json
+
+{
+  "type": "PRISMA"
+}
+
+### 6. Verificar cambio
+GET http://localhost:3000/api/system/info
+
+##################################################
+### Comparación con endpoints estándar (Prisma/TypeORM)
+### Base URL para endpoints estándar
+@standardUrl = http://localhost:3000/api/todos
+
+### Comparar: Obtener todos con datasource estándar
+GET {{standardUrl}}
+
+### Comparar: Crear todo con datasource estándar
+POST {{standardUrl}}
+Content-Type: application/json
+
+{
+  "text": "Todo creado con datasource estándar"
+} 
