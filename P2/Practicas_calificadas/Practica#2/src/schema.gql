@@ -1,0 +1,93 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Cultivo {
+  id: Int!
+  nombre: String!
+  tipo: String!
+  temporada: String!
+  region: String!
+}
+
+type Plaga {
+  id: Int!
+  nombre: String!
+  tipo: String!
+  regionAfectada: String!
+  nivelRiesgo: String!
+}
+
+type DatoAExportar {
+  id: Int!
+  producto: String!
+  cantidad: Int!
+  destino: String!
+  fechaExportacion: String!
+}
+
+type Query {
+  cultivos: [Cultivo!]!
+  cultivo(id: Int!): Cultivo!
+  plagas: [Plaga!]!
+  plaga(id: Int!): Plaga!
+  datoAExportars: [DatoAExportar!]!
+  datoAExportar(id: Int!): DatoAExportar!
+}
+
+type Mutation {
+  createCultivo(createCultivoInput: CreateCultivoInput!): Cultivo!
+  updateCultivo(updateCultivoInput: UpdateCultivoInput!): Cultivo!
+  removeCultivo(id: Int!): Cultivo!
+  createPlaga(createPlagaInput: CreatePlagaInput!): Plaga!
+  updatePlaga(updatePlagaInput: UpdatePlagaInput!): Plaga!
+  removePlaga(id: Int!): Plaga!
+  createDatoAExportar(createDatoAExportarInput: CreateDatoAExportarInput!): DatoAExportar!
+  updateDatoAExportar(updateDatoAExportarInput: UpdateDatoAExportarInput!): DatoAExportar!
+  removeDatoAExportar(id: Int!): DatoAExportar!
+}
+
+input CreateCultivoInput {
+  nombre: String!
+  tipo: String!
+  temporada: String!
+  region: String!
+}
+
+input UpdateCultivoInput {
+  nombre: String
+  tipo: String
+  temporada: String
+  region: String
+  id: Int!
+}
+
+input CreatePlagaInput {
+  nombre: String!
+  tipo: String!
+  regionAfectada: String!
+  nivelRiesgo: String!
+}
+
+input UpdatePlagaInput {
+  nombre: String
+  tipo: String
+  regionAfectada: String
+  nivelRiesgo: String
+  id: Int!
+}
+
+input CreateDatoAExportarInput {
+  producto: String!
+  cantidad: Int!
+  destino: String!
+  fechaExportacion: String!
+}
+
+input UpdateDatoAExportarInput {
+  producto: String
+  cantidad: Int
+  destino: String
+  fechaExportacion: String
+  id: Int!
+}
