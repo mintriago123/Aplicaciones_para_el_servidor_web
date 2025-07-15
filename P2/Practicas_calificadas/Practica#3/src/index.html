@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+<script>
+const socket = io('http://localhost:3000', { transports: ['websocket'] }); // Socket.IO client
+
+socket.on('connect', () => {
+  console.log('Conectado con id:', socket.id);
+
+  // Enviar evento de ejemplo
+  socket.emit('createCultivo', {
+    nombre: "Trigo",
+    tipo: "Cereal",
+    temporada: "Invierno",
+    region: "Andalucía"
+  });
+});
+
+socket.onAny((event, data) => {
+  console.log('Evento recibido:', event, data);
+});
+</script>
+</body>
+</html>
