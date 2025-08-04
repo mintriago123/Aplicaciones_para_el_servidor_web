@@ -1,0 +1,46 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreateVehiculoInput {
+  anioFabricacion: Int!
+  marca: String!
+  modelo: String!
+  tipo: String!
+}
+
+type Mutation {
+  createVehiculo(createVehiculoInput: CreateVehiculoInput!): Vehiculo!
+  removeVehiculo(id: Int!): Vehiculo!
+  updateVehiculo(updateVehiculoInput: UpdateVehiculoInput!): Vehiculo!
+}
+
+type Query {
+  vehiculo(id: Int!): Vehiculo!
+  vehiculos: [Vehiculo!]!
+}
+
+input UpdateVehiculoInput {
+  anioFabricacion: Int
+  id: Int!
+  marca: String
+  modelo: String
+  tipo: String
+}
+
+type Vehiculo {
+  """Año de fabricación del vehículo"""
+  anioFabricacion: Int!
+
+  """ID único del vehículo"""
+  id: Int!
+
+  """Marca del vehículo"""
+  marca: String!
+
+  """Modelo del vehículo"""
+  modelo: String!
+
+  """Tipo de vehículo (sedan, camioneta, SUV, etc.)"""
+  tipo: String!
+}

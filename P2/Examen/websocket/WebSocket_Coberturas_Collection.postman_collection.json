@@ -1,0 +1,176 @@
+{
+  "info": {
+    "name": "WebSocket Coberturas API",
+    "description": "Colección para probar el WebSocket de Coberturas en NestJS",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Conectar a WebSocket Coberturas",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "ws://localhost:3002/coberturas",
+          "protocol": "ws",
+          "host": [
+            "localhost"
+          ],
+          "port": "3002",
+          "path": [
+            "coberturas"
+          ]
+        },
+        "description": "Conectar al namespace de coberturas del WebSocket"
+      }
+    },
+    {
+      "name": "Obtener Todas las Coberturas",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"event\": \"coberturas:findAll\",\n  \"data\": {}\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "description": "Obtener todas las coberturas disponibles"
+      }
+    },
+    {
+      "name": "Crear Nueva Cobertura",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"event\": \"coberturas:create\",\n  \"data\": {\n    \"tipo\": \"total\",\n    \"seguro\": \"todo riesgo\",\n    \"deducible\": 500.00\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "description": "Crear una nueva cobertura"
+      }
+    },
+    {
+      "name": "Buscar Cobertura por ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"event\": \"coberturas:findOne\",\n  \"data\": {\n    \"id\": 1\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "description": "Buscar una cobertura específica por su ID"
+      }
+    },
+    {
+      "name": "Buscar por Tipo de Cobertura",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"event\": \"coberturas:findByTipo\",\n  \"data\": {\n    \"tipo\": \"total\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "description": "Buscar coberturas por tipo específico"
+      }
+    },
+    {
+      "name": "Buscar por Tipo de Seguro",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"event\": \"coberturas:findBySeguro\",\n  \"data\": {\n    \"seguro\": \"todo riesgo\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "description": "Buscar coberturas por tipo de seguro"
+      }
+    },
+    {
+      "name": "Actualizar Cobertura",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"event\": \"coberturas:update\",\n  \"data\": {\n    \"id\": 1,\n    \"tipo\": \"parcial\",\n    \"seguro\": \"responsabilidad civil\",\n    \"deducible\": 300.00\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "description": "Actualizar una cobertura existente"
+      }
+    },
+    {
+      "name": "Eliminar Cobertura",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"event\": \"coberturas:remove\",\n  \"data\": {\n    \"id\": 1\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "description": "Eliminar una cobertura por su ID"
+      }
+    },
+    {
+      "name": "Obtener Estadísticas",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"event\": \"coberturas:statistics\",\n  \"data\": {}\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "description": "Obtener estadísticas de todas las coberturas"
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "ws://localhost:3002",
+      "type": "string"
+    },
+    {
+      "key": "namespace",
+      "value": "coberturas",
+      "type": "string"
+    }
+  ]
+}

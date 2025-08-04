@@ -1,0 +1,193 @@
+{
+  "database": {
+    "name": "seguros_vehiculos_db",
+    "version": "1.0.0",
+    "created": "2025-08-04",
+    "description": "Base de datos para sistema de seguros de vehículos"
+  },
+  "vehiculos": [
+    {
+      "id": 1,
+      "tipo": "sedan",
+      "marca": "Toyota",
+      "modelo": "Corolla",
+      "añoFabricacion": 2020
+    },
+    {
+      "id": 2,
+      "tipo": "camioneta",
+      "marca": "Ford",
+      "modelo": "F-150",
+      "añoFabricacion": 2019
+    },
+    {
+      "id": 3,
+      "tipo": "SUV",
+      "marca": "Honda",
+      "modelo": "CR-V",
+      "añoFabricacion": 2021
+    },
+    {
+      "id": 4,
+      "tipo": "hatchback",
+      "marca": "Volkswagen",
+      "modelo": "Golf",
+      "añoFabricacion": 2018
+    },
+    {
+      "id": 5,
+      "tipo": "deportivo",
+      "marca": "BMW",
+      "modelo": "M3",
+      "añoFabricacion": 2022
+    }
+  ],
+  "conductores": [
+    {
+      "id": 1,
+      "nombre": "Juan",
+      "apellido": "Pérez",
+      "email": "juan.perez@email.com"
+    },
+    {
+      "id": 2,
+      "nombre": "María",
+      "apellido": "González",
+      "email": "maria.gonzalez@email.com"
+    },
+    {
+      "id": 3,
+      "nombre": "Carlos",
+      "apellido": "Rodríguez",
+      "email": "carlos.rodriguez@email.com"
+    },
+    {
+      "id": 4,
+      "nombre": "Ana",
+      "apellido": "López",
+      "email": "ana.lopez@email.com"
+    },
+    {
+      "id": 5,
+      "nombre": "Luis",
+      "apellido": "Martínez",
+      "email": "luis.martinez@email.com"
+    }
+  ],
+  "coberturas": [
+    {
+      "id": 1,
+      "tipo": "total",
+      "seguro": "todo riesgo",
+      "deducible": 500.00
+    },
+    {
+      "id": 2,
+      "tipo": "parcial",
+      "seguro": "responsabilidad civil",
+      "deducible": 250.00
+    },
+    {
+      "id": 3,
+      "tipo": "contra robo",
+      "seguro": "robo y hurto",
+      "deducible": 300.00
+    },
+    {
+      "id": 4,
+      "tipo": "contra terceros",
+      "seguro": "daños a terceros",
+      "deducible": 200.00
+    },
+    {
+      "id": 5,
+      "tipo": "total",
+      "seguro": "premium",
+      "deducible": 750.00
+    }
+  ],
+  "relaciones": {
+    "vehiculo_conductor": [
+      {
+        "vehiculoId": 1,
+        "conductorId": 1,
+        "fechaAsignacion": "2024-01-15"
+      },
+      {
+        "vehiculoId": 2,
+        "conductorId": 2,
+        "fechaAsignacion": "2024-02-10"
+      },
+      {
+        "vehiculoId": 3,
+        "conductorId": 3,
+        "fechaAsignacion": "2024-03-05"
+      },
+      {
+        "vehiculoId": 4,
+        "conductorId": 4,
+        "fechaAsignacion": "2024-04-20"
+      },
+      {
+        "vehiculoId": 5,
+        "conductorId": 5,
+        "fechaAsignacion": "2024-05-12"
+      }
+    ],
+    "vehiculo_cobertura": [
+      {
+        "vehiculoId": 1,
+        "coberturaId": 2,
+        "fechaContratacion": "2024-01-16",
+        "vigencia": "2025-01-16"
+      },
+      {
+        "vehiculoId": 2,
+        "coberturaId": 1,
+        "fechaContratacion": "2024-02-11",
+        "vigencia": "2025-02-11"
+      },
+      {
+        "vehiculoId": 3,
+        "coberturaId": 3,
+        "fechaContratacion": "2024-03-06",
+        "vigencia": "2025-03-06"
+      },
+      {
+        "vehiculoId": 4,
+        "coberturaId": 4,
+        "fechaContratacion": "2024-04-21",
+        "vigencia": "2025-04-21"
+      },
+      {
+        "vehiculoId": 5,
+        "coberturaId": 5,
+        "fechaContratacion": "2024-05-13",
+        "vigencia": "2025-05-13"
+      }
+    ]
+  },
+  "metadata": {
+    "totalVehiculos": 5,
+    "totalConductores": 5,
+    "totalCoberturas": 5,
+    "ultimaActualizacion": "2025-08-04T10:00:00Z",
+    "esquemas": {
+      "vehiculo": {
+        "campos": ["id", "tipo", "marca", "modelo", "añoFabricacion"],
+        "tiposPermitidos": {
+          "tipo": ["sedan", "camioneta", "SUV", "hatchback", "deportivo", "convertible", "coupe"]
+        }
+      },
+      "conductor": {
+        "campos": ["id", "nombre", "apellido", "email"]
+      },
+      "cobertura": {
+        "campos": ["id", "tipo", "seguro", "deducible"],
+        "tiposPermitidos": {
+          "tipo": ["total", "parcial", "contra robo", "contra terceros", "cristales", "incendio"]
+        }
+      }
+    }
+  }
+}
